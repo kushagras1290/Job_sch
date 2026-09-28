@@ -4,6 +4,7 @@
   "main": "src/index.ts",
   "compatibility_date": "2026-09-28",
   "compatibility_flags": ["nodejs_compat"],
+  "assets": { "directory": "public", "binding": "ASSETS" },
   "durable_objects": {
     "bindings": [{ "name": "JOB_SCOUT", "class_name": "JobScoutAgent" }]
   },

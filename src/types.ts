@@ -29,6 +29,7 @@ export type AgentState = {
 
 export type Env = {
   JOB_SCOUT: DurableObjectNamespace;
+  ASSETS: Fetcher;
   CRON_SECRET: string;
   OPENAI_API_KEY?: string;
   OPENAI_MODEL?: string;

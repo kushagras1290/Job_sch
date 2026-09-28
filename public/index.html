@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Private, find-only remote AI job research dashboard." />
+    <title>Job Scout Agent</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <header class="hero">
+        <p class="eyebrow">PRIVATE JOB RESEARCH</p>
+        <div class="hero-row">
+          <div>
+            <h1>Job Scout<br /><em>Agent</em></h1>
+            <p class="lede">Find, verify, score, and track remote AI roles. Applications always stay under your control.</p>
+          </div>
+          <div class="state-card"><span class="pulse"></span><span id="connection-state">Connect your private dashboard</span></div>
+        </div>
+      </header>
+
+      <section class="auth-panel" aria-labelledby="access-title">
+        <div>
+          <p class="eyebrow">ACCESS</p>
+          <h2 id="access-title">Unlock your tracker</h2>
+          <p>Your API secret remains only in this browser tab until you close it.</p>
+        </div>
+        <form id="auth-form">
+          <label for="secret">API secret</label>
+          <div class="secret-row"><input id="secret" type="password" autocomplete="off" placeholder="CRON_SECRET" required /><button type="submit">Connect</button></div>
+        </form>
+      </section>
+
+      <section class="controls" aria-label="Scout controls">
+        <div>
+          <p class="eyebrow">AUTOMATION</p>
+          <h2>Every three hours,<br />on the dot.</h2>
+          <p id="schedule-text">Connect to view the durable schedule and latest run.</p>
+        </div>
+        <div class="actions">
+          <button id="run-now" class="primary" disabled>Run search now <span aria-hidden="true">→</span></button>
+          <button id="export" class="secondary" disabled>Download CSV</button>
+        </div>
+      </section>
+
+      <section class="metrics" aria-label="Tracker summary">
+        <article><span>Tracked roles</span><strong id="tracked-count">—</strong></article>
+        <article><span>Actionable</span><strong id="new-count">—</strong></article>
+        <article><span>On hold</span><strong id="hold-count">—</strong></article>
+        <article><span>Latest run</span><strong id="last-run">—</strong></article>
+      </section>
+
+      <section class="jobs-section" aria-labelledby="jobs-title">
+        <div class="section-top">
+          <div><p class="eyebrow">REVIEW QUEUE</p><h2 id="jobs-title">What the agent found</h2></div>
+          <div class="filters" role="group" aria-label="Filter jobs">
+            <button class="filter active" data-filter="all">All</button>
+            <button class="filter" data-filter="New">Actionable</button>
+            <button class="filter" data-filter="Hold">Hold</button>
+          </div>
+        </div>
+        <p id="empty-message" class="empty">Connect your secret to load the tracker.</p>
+        <div id="jobs" class="jobs" aria-live="polite"></div>
+      </section>
+
+      <section class="guardrail">
+        <p class="eyebrow">GUARDRAIL</p>
+        <p><strong>This agent researches only.</strong> It cannot apply, contact employers, upload a résumé, create accounts, or answer application questions. Unknown eligibility and incompatible hours stay visible as Hold records.</p>
+      </section>
+    </main>
+    <template id="job-template">
+      <article class="job-card">
+        <div class="job-top"><span class="status"></span><span class="score"></span></div>
+        <h3></h3><p class="company"></p>
+        <p class="evidence"></p>
+        <div class="tags"></div>
+        <div class="job-footer"><a target="_blank" rel="noreferrer">Open listing <span aria-hidden="true">↗</span></a><time></time></div>
+      </article>
+    </template>
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>
