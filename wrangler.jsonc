@@ -1,0 +1,11 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "job-scout-agent",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-09-28",
+  "compatibility_flags": ["nodejs_compat"],
+  "durable_objects": {
+    "bindings": [{ "name": "JOB_SCOUT", "class_name": "JobScoutAgent" }]
+  },
+  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["JobScoutAgent"] }]
+}
